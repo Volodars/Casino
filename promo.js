@@ -8,7 +8,7 @@ let redeemPromoButton;
 let promoCodeResult;
 
 // --- Game State Variables (loaded from localStorage) ---
-let playerBalance = parseFloat(localStorage.getItem('playerBalance')) || 1000;
+let playerBalance = parseFloat(localStorage.getItem('playerBalance')) || 0;
 
 // --- Promo Code Configuration ---
 const PROMO_CODES = {
