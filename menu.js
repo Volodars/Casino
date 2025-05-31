@@ -7,7 +7,7 @@
                 balanceAmountSpan.textContent = parseFloat(playerBalance).toFixed(2);
             } else {
                 // If balance not found, set default value and save it
-                playerBalance = 1000;
+                playerBalance = 0;
                 localStorage.setItem('playerBalance', playerBalance.toFixed(2));
                 balanceAmountSpan.textContent = playerBalance.toFixed(2);
             }
