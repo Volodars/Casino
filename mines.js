@@ -44,7 +44,7 @@ cashOutSound.volume = 0.7;
 function updateDisplay() {
     balanceDisplay.textContent = playerBalance.toFixed(2); // <--- Применяем toFixed(2) для отображения
     currentBetDisplay.textContent = currentBet.toFixed(2); // <--- Применяем toFixed(2) для отображения
-    multiplierDisplay.textContent = currentMultiplier.toFixed(2) + 'x'; // Display with 2 decimal places
+    multiplierDisplay.textContent = currentMultiplier.toFixed(2) + 'x' * 0.98; // Display with 2 decimal places + HOUSE EDGE = 2%
     
     // Set max value for mine count input based on board size.
     // Max mines should be total cells minus 1, to ensure at least one safe spot to start.
