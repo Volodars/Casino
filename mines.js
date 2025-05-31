@@ -159,7 +159,7 @@ function revealCell(row, col) {
             const cellsNotYetClicked = totalCells - i;
             const safeCellsNotYetClicked = totalSafeCells - i;
             if (safeCellsNotYetClicked > 0) { // Avoid division by zero
-                newCalculatedMultiplier *= (cellsNotYetClicked / safeCellsNotYetClicked) *0.98; //HOUSE EDGE = 2%
+                newCalculatedMultiplier *= (cellsNotYetClicked / safeCellsNotYetClicked);// *0.98; //HOUSE EDGE = 2%
             } else {
                 // This means all safe cells have been clicked, multiplier is maxed out.
                 break;
