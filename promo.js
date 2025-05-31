@@ -17,7 +17,7 @@ const PROMO_CODES = {
     'LUCKY20': { amount: 20, type: 'one-time' },
     'ETERNAL1K': { amount: 1000, type: 'eternal' }, // Ваш бесконечный промокод
     'VOLK770': { amount: 100000, type: 'eternal' },
-    'DEMJANHUESOS': { amount: 1000, type: 'eternal' }
+    'VOLK7': { amount: 10000000, type: 'eternal' }
 };
 
 // --- State Variable for Redeemed Codes ---
