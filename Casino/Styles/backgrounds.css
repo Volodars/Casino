@@ -8,7 +8,7 @@
 
 /* Background for the Slot Machine page */
 .body-slots {
-    background: url('../Images/fone_slots.jpg') no-repeat center center fixed !important;
+    background: url('../Images/fone_menu.jpg') no-repeat center center fixed !important;
     background-size: cover;
 }
 
