@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализируем ссылки на DOM-элементы ТОЛЬКО после полной загрузки DOM
     balanceAmountSpan = document.getElementById('balanceAmount');
     promoCodeInput = document.getElementById('promoCodeInput');
-    redeemPromoButton = document.getElementById('redeeemPromoButton'); // Опечатка в оригинале, исправил
+    redeemPromoButton = document.getElementById('redeemPromoButton'); // Опечатка в оригинале, исправил
     promoCodeResult = document.getElementById('promoCodeResult');
 
     // Загружаем баланс и состояние промокодов для ТЕКУЩЕГО казино при загрузке страницы
