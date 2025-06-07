@@ -41,7 +41,7 @@ const cellImages = {};
 const SAFE_IMAGE_COUNT = 80; // Maximum number of unique safe cell images you have
 const imagePaths = {
     'unopened_cell': '../Images/unopened_cell.jpg', // Path to your unopened cell image (e.g., ../Images/unopened_cell.jpg)
-    'mine_bomb': '../Images/mine_bomb.jpg'         // Path to your mine image (e.g., ../Images/mine_bomb.jpg)
+    'mine_bomb': '../Images/mine_bomb.jpg'          // Path to your mine image (e.g., ../Images/mine_bomb.jpg)
 };
 
 // Dynamically add paths for safe cell images
@@ -68,7 +68,7 @@ function preloadImages(paths) {
                 // Fallback to a small, empty placeholder image on error
                 const fallbackImg = new Image();
                 // A very basic SVG as a placeholder. Adjust size/color if needed.
-                fallbackImg.src = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1I+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiM5OTkiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9ImFyaWFsIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSIjRkZGIj5FUlJPUjwvdGV4dD48L3N2Zz4=`;
+                fallbackImg.src = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z0I+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiM5OTkiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9ImFyaWFsIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSIjRkZGIj5FUlJPUjwvdGV4dD48L3N2Zz4=`;
                 fallbackImg.onload = () => {
                     cellImages[key] = fallbackImg;
                     resolve();
@@ -84,7 +84,7 @@ function preloadImages(paths) {
 // IMPORTANT: Ensure these paths are correct for your files!
 const clickSound = new Audio('../Music/Click.mp3');    // Sound for clicking a safe cell
 const mineSound = new Audio('../Music/Explosion.mp3'); // Sound for hitting a mine (lose)
-const cashOutSound = new Audio('../Music/Win.mp3');   // Sound for cashing out (win)
+const cashOutSound = new Audio('../Music/Win.mp3');    // Sound for cashing out (win)
 
 clickSound.load();     // Preload click sound
 mineSound.load();      // Preload mine sound
@@ -318,19 +318,28 @@ function revealCell(row, col) {
         }
         cellElement.classList.add('safe-revealed'); // Add class for gold background
 
-        // --- Multiplier Calculation for Casino Mines Game ---
-        let newCalculatedMultiplier = 1;
+        // --- Multiplier Calculation for Casino Mines Game (Corrected) ---
+        let probProduct = 1.0;
         const totalCells = boardRows * boardCols;
+        const totalMines = mineCount;
+        
         for (let i = 0; i < safeCellsClickedThisRound; i++) {
-            const cellsNotYetClicked = totalCells - i;
-            const safeCellsNotYetClicked = totalSafeCells - i;
-            if (safeCellsNotYetClicked > 0) { // Avoid division by zero
-                newCalculatedMultiplier *= (cellsNotYetClicked / safeCellsNotYetClicked) * 0.98; // 0.98 is a house edge factor
+            const cellsLeft = totalCells - i;
+            const safeCellsLeft = (totalCells - totalMines) - i;
+            
+            if (safeCellsLeft > 0) { // Avoid division by zero
+                probProduct *= (safeCellsLeft / cellsLeft);
             } else {
-                break; // All safe cells have been clicked
+                break; // Should not be reached if totalSafeCells is correct
             }
         }
-        currentMultiplier = newCalculatedMultiplier;
+        
+        if (probProduct > 0) { // Avoid division by zero
+            currentMultiplier = 1 / probProduct;
+        } else {
+            currentMultiplier = 1; // Fallback, should not be reached
+        }
+        // The house edge (0.98) is now applied ONLY at payout in endGame()
 
         // Check if all safe cells have been revealed (player wins automatically if so)
         if (safeCellsClickedThisRound === totalSafeCells) {
@@ -394,17 +403,18 @@ function endGame(win) {
 
     // Play win/lose sound based on result
     if (win) {
-        let winnings = currentBet * currentMultiplier;
+        // Apply house edge to winnings here
+        let winnings = currentBet * currentMultiplier * 0.98; // Apply 0.98 house edge at payout
         winnings = parseFloat(winnings.toFixed(2)); 
         playerBalance = parseFloat((playerBalance + winnings).toFixed(2));
         saveBalance(); // Use saveBalance() from promo.js
-        resultText.textContent = `You cashed out! 🎉 Won ${winnings.toFixed(2)} (${currentMultiplier.toFixed(2)}x)`;
+        resultText.textContent = `You cashed out! 🎉 Won $${winnings.toFixed(2)} (${currentMultiplier.toFixed(2)}x)`;
         cashOutSound.pause(); cashOutSound.currentTime = 0; // Reset and play win sound
         cashOutSound.play();
     } else {
         // If the player loses, the balance was already deducted at the start of the game.
         saveBalance(); // Use saveBalance() to persist final balance after a loss
-        resultText.textContent = `BOOM! You hit a mine. 💥 Lost ${currentBet.toFixed(2)}.`;
+        resultText.textContent = `BOOM! You hit a mine. 💥 Lost $${currentBet.toFixed(2)}.`;
         mineSound.pause(); mineSound.currentTime = 0; // Reset and play lose sound
         mineSound.play();
     }
@@ -574,10 +584,20 @@ startGameButton.addEventListener('click', () => {
     }
     // Validate mine count input
     const inputMineCount = parseInt(mineCountInput.value);
-    if (isNaN(inputMineCount) || inputMineCount < 1 || inputMineCount >= (boardRows * boardCols)) {
-        resultText.textContent = `Invalid mine count! Must be between 1 and ${boardRows * boardCols - 1}.`; // Update error message
+    const totalCells = boardRows * boardCols;
+
+    // Base validation for mine count
+    if (isNaN(inputMineCount) || inputMineCount < 1 || inputMineCount >= totalCells) {
+        resultText.textContent = `Invalid mine count! Must be between 1 and ${totalCells - 1}.`; 
         return;
     }
+
+    // Specific rule for 9x9 board: minimum 2 mines
+    if (boardRows === 9 && boardCols === 9 && inputMineCount < 2) {
+        resultText.textContent = 'For a 9x9 board, minimum mines is 2!';
+        return;
+    }
+
     mineCount = inputMineCount; // Use parsed value
 
     // Deduct bet and save balance IMMEDIATELY at game start
