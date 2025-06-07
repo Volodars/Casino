@@ -1,4 +1,4 @@
-# [Casino](https://volodars.github.io/Casino/Funny%20casino/Menu.html)
+# [Casino](https://volodars.github.io/Casino/Casino/Menu.html)
 # [Funny casino](https://volodars.github.io/Casino/Funny%20casino/Menu.html)
 
 🎰 Casino Project (Web Application)
