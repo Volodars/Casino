@@ -1,0 +1,43 @@
+/* backgrounds.css */
+
+/* Background for the main menu page */
+.body-menu { 
+    background: url('../Images/fone_menu.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Slot Machine page */
+.body-slots {
+    background: url('../Images/fone_slots.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Roulette page */
+.body-roulette {
+    background: url('../Images/fone_roulette.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Heads or Tails page */
+.body-coin { 
+    background: url('../Images/fone_coin.png') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+/* Background for the Mines page */
+.body-mines {
+    background: url('../Images/fone_mines.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Blackjack page */
+.body-blackjack {
+    background: url('../Images/fone_blackjack.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Casino War page */
+.body-war {
+    background: url('../Images/fone_casino_war.png') no-repeat center center fixed;
+    background-size: cover;
+}
