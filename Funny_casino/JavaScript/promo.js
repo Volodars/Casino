@@ -42,7 +42,7 @@ function getCasinoRedeemedCodesKey() {
 function loadBalance() {
     const key = getCasinoBalanceKey();
     const savedBalance = localStorage.getItem(key);
-    playerBalance = parseFloat(savedBalance) || 1000; // Начальный баланс 1000, если нет сохранения
+    playerBalance = parseFloat(savedBalance) || 0; // Начальный баланс 0, если нет сохранения
     console.log(`[promo.js - ${CASINO_ID}] Loaded balance: ${playerBalance.toFixed(2)}`);
 
     // Загружаем состояние использованных промокодов для ТЕКУЩЕГО казино
