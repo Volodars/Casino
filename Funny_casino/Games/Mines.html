@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines</title>
+    <link rel="stylesheet" href="../Styles/styles.css" />
+    <link rel="stylesheet" href="../Styles/backgrounds.css">
+</head>
+<body class="body-mines">
+    <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="../Menu.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Slots.html">Slot Machine</a></li>
+                        <li><a href="Roulette.html">Roulette</a></li>
+                        <li><a href="Coin.html">Boobs or Booty</a></li>
+                        <li><a href="Mines.html">Mines</a></li>
+                        <li><a href="Blackjack.html">Blackjack</a></li>
+                        <li><a href="Casino_War.html">Casino War</a></li>
+                    </ul>
+                </li>
+                <li class="balance-container-li">
+                    <a href="#">Balance: <span id="balanceAmount">0.00</span></a>
+                    <div class="balance-dropdown">
+                        <div class="dropdown-item inactive">
+                            <span>Deposit Balance</span>
+                            <p>(Not yet implemented)</p>
+                        </div>
+                        <div class="dropdown-item promo-code-input-section">
+                            <input type="text" id="promoCodeInput" placeholder="Enter promo code" class="input-field-small">
+                            <button id="redeemPromoButton" class="button-small">Redeem</button>
+                            <p id="promoCodeResult" class="result-text-small"></p>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="game-page-main mines-game-main">
+        <h1 class="game-page-h1 mines-game-h1">Mines</h1>
+
+        <div class="game-info">
+            <div><p>Current bet: <span id="currentBetDisplay">100</span></p></div>
+            <div><p>Multiplier: <span id="multiplierDisplay">1.00x</span></p></div>
+        </div>
+
+        <div class="bet-amount-controls">
+            <div><label for="betAmountInput">Change your bet:</label></div>
+            <div class="bet-input-and-buttons">
+                <input type="number" id="betAmountInput" value="100" min="10" step="10" class="bet-input">
+                <button id="setBetButton" class="control-button">Set Bet</button>
+                <button id="allInButton" class="all-in-button">All In</button> <!-- Simplified class -->
+            </div>
+        </div>
+
+        <div class="game-settings">
+            <div class="board-size-selection">
+                <div><label>Choose board size:</label></div>
+                <div class="row-controls">
+                    <button id="setRows3x3" class="row-option-button">3x3</button>
+                    <button id="setRows5x5" class="row-option-button">5x5</button>
+                    <button id="setRows7x7" class="row-option-button">7x7</button>
+                    <button id="setRows9x9" class="row-option-button">9x9</button>
+                </div>
+            </div>
+
+            <div class="mine-count-selection">
+                <div><label for="mineCountInput">Number of Mines:</label></div>
+                <div><input type="number" id="mineCountInput" value="3" min="1" class="bet-input"></div>
+            </div>
+            
+            <div><button id="startGameButton" class="control-button start-game-button">Start Game</button></div>
+        </div>
+
+        <div id="minesBoard" class="mines-board">
+        </div>
+
+        <div class="game-actions">
+            <div><button id="cashOutButton" class="control-button cash-out-button" disabled>Cash Out</button></div>
+        </div>
+
+        <p id="resultText" class="result-text"></p>
+
+    </main>
+    
+    <script src="../JavaScript/promo.js"></script>
+    <script src="../JavaScript/mines.js"></script>
+</body>
+</html>
