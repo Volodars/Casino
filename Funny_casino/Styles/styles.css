@@ -1,0 +1,1264 @@
+/* styles.css - Объединенные и очищенные стили для всего сайта */
+
+/* --- Общие стили для всего HTML документа --- */
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #eee;
+    background-size: cover; /* Фоновое изображение обрабатывается через backgrounds.css */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Стили для хедера --- */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- Стили для навигационного меню --- */
+nav.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 10px; /* Добавлен горизонтальный отступ */
+    display: flex;
+    justify-content: flex-end; /* По умолчанию выравнивание вправо */
+    gap: 30px;
+    flex-wrap: wrap; /* Разрешает перенос элементов на новую строку */
+}
+
+/* Стили для отдельных пунктов меню */
+nav.menu ul li {
+    position: relative;
+    flex-shrink: 0; /* Предотвращает чрезмерное сжатие пунктов меню */
+}
+
+/* Стили для ссылок в навигационном меню */
+nav.menu ul li a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s, border-radius 0.3s;
+    border-radius: 5px;
+}
+
+/* Чтобы другие пункты меню (Home, Games, Login) не переносились */
+nav.menu ul li:not(.balance-container-li) a {
+    white-space: nowrap;
+}
+
+/* Стилизация для ссылки баланса, чтобы она могла переноситься */
+nav.menu ul li.balance-container-li a {
+    display: flex;
+    flex-direction: column; /* Элементы внутри будут располагаться вертикально */
+    align-items: center; /* Центрируем по горизонтали */
+    text-align: center;
+    white-space: normal; /* Разрешаем перенос текста */
+    line-height: 1.2; /* Уменьшаем межстрочный интервал для компактности */
+}
+/* Убедимся, что span с балансом тоже может переноситься */
+nav.menu ul li.balance-container-li #balanceAmount {
+    white-space: normal;
+}
+
+/* Эффект при наведении на ссылки меню */
+nav.menu ul li a:hover {
+    background-color: #444;
+    border-radius: 8px;
+}
+
+/* --- Стили для выпадающих меню (Games и Balance) --- */
+nav.menu ul li ul.dropdown-menu,
+.balance-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0; /* По умолчанию выравнивание вправо */
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 5px;
+    min-width: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 2000;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Отображение выпадающих меню при наведении */
+nav.menu ul li.dropdown:hover ul.dropdown-menu,
+nav.menu ul li.balance-container-li:hover .balance-dropdown {
+    display: block;
+}
+
+/* Стили для ссылок внутри выпадающего меню */
+nav.menu ul li ul.dropdown-menu li a {
+    padding: 10px 15px;
+    font-weight: normal;
+    font-size: 16px;
+    border-radius: 0;
+}
+
+/* Эффект при наведении на ссылки выпадающего меню */
+nav.menu ul li ul.dropdown-menu li a:hover {
+    background-color: #555;
+}
+
+/* Стили для элементов промокода внутри выпадающего меню баланса */
+.balance-dropdown .promo-code-input-section {
+    padding: 10px;
+}
+.balance-dropdown .input-field-small {
+    padding: 8px 12px;
+    font-size: 1em;
+    border: 2px solid #ff7f50;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #eee;
+    width: calc(100% - 24px); /* Учитываем padding */
+    box-sizing: border-box;
+    text-align: center;
+}
+.balance-dropdown .button-small {
+    font-size: 16px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50; /* Зеленый цвет для Redeem */
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    width: 100%; /* Полная ширина кнопки */
+    margin-top: 10px;
+}
+.balance-dropdown .button-small:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.balance-dropdown .button-small:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.balance-dropdown .result-text-small {
+    font-size: 0.9em;
+    color: #ffd700;
+    margin-top: 10px;
+}
+
+
+/* --- Стили, специфичные для страницы Меню (Menu.html) --- */
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    color: #eee;
+    text-align: center;
+    box-sizing: border-box;
+    width: 90%;
+}
+
+.main-content h1 {
+    font-size: 3em;
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.game-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.game-card {
+    background-color: rgba(30, 30, 30, 0.9);
+    border: 2px solid #00ff00;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 255, 0, 0.7);
+}
+
+.game-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Делает изображение квадратным */
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.game-title {
+    font-size: 1.8em;
+    color: #00ff00;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+.game-description {
+    font-size: 1em;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+
+/* --- Общие стили для игровых страниц (main, h1, game-info, canvas, controls, buttons) --- */
+/* Этот класс должен быть добавлен к <main> на всех игровых страницах (Slots, Roulette, Coin, Mines) */
+main.game-page-main {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    max-width: 90%;
+    width: 550px; /* Фиксированная ширина для десктопов */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Зазор между элементами в main */
+}
+/* Этот класс должен быть добавлен к <h1> на всех игровых страницах */
+h1.game-page-h1 {
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Общие стили для информационных блоков игры (баланс, ставка, множитель) */
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Выравнивание по центру вертикально */
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    /* Специально для Mines, где game-info flex-direction: column, будет переопределено ниже */
+}
+.game-info p {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #eee;
+}
+.info-value {
+    color: #ff7f50;
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+/* Общие стили для HTML Canvas элементов в играх */
+canvas {
+    border: 3px solid #ffd700;
+    background: rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    width: 100%;
+    height: auto;
+    max-width: 500px; /* Максимальная ширина для холста на десктопе */
+}
+
+/* Общие стили для контейнеров управления ставками */
+.bet-controls {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* NEW: чтобы кнопки переносились на маленьких экранах */
+}
+.bet-controls label {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.bet-input {
+    padding: 8px 12px;
+    font-size: 1em;
+    border: 2px solid #ff7f50;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #eee;
+    width: 80px;
+    text-align: center;
+}
+.bet-input:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 5px #ffd700;
+}
+
+/* Общие стили для всех управляющих кнопок (Set, Spin, Start Game, Cash Out, Bet Options) */
+.control-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #ff7f50;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+.control-button:hover {
+    background-color: #ff4c1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.control-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Общие стили для кнопки "All In" (ранее special-bet-button) */
+.all-in-button { /* Переименовано из special-bet-button для ясности */
+    background-color: #e74c3c;
+    color: white;
+    border: 2px solid #c0392b;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.all-in-button:hover {
+    background-color: #c0392b;
+    border-color: #a02d20;
+    transform: translateY(-2px);
+}
+.all-in-button:active {
+    background-color: #a02d20;
+    border-color: #80241a;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Общие стили для текста результата (win/lose) */
+.result-text {
+    margin-top: 20px; /* Отступ сверху для результатов на игровых страницах */
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Стили, специфичные для игры "Рулетка" --- */
+.spin-button { /* Переопределение для кнопки Spin (Рулетка, Слоты, Монетка) */
+    background-color: #4CAF50;
+    margin-top: 10px;
+    padding: 12px 30px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.spin-button:hover {
+    background-color: #45a049;
+}
+.bet-option-button { /* Базовые стили для кнопок выбора (цвета) */
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    transition: transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    margin: 5px;
+}
+.red-bet-button { background-color: #E74C3C; }
+.red-bet-button:hover { background-color: #C0392B; transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
+.black-bet-button { background-color: #34495E; }
+.black-bet-button:hover { background-color: #2C3E50; transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
+.green-bet-button { background-color: #2ECC71; }
+.green-bet-button:hover { background-color: #27AE60; transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
+
+.bet-color-options {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.bet-number-options { /* Используется для контейнера числовой ставки */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.number-input {
+    width: 60px;
+    text-align: center;
+}
+.bet-option-button.selected {
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+
+/* --- Стили, специфичные для игры "Монетка" --- */
+#betHeadsButton { background-color: #007bff; }
+#betHeadsButton:hover { background-color: #0056b3; }
+#betTailsButton { background-color: #6f42c1; }
+#betTailsButton:hover { background-color: #5a359b; }
+#betEdgeButton { background-color: #ffc107; color: #333; }
+#betEdgeButton:hover { background-color: #e0a800; }
+
+#coinCanvas { /* Уникальный ID для холста монетки */
+    border: 3px solid #ffd700;
+    background: rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+    aspect-ratio: 1 / 1; /* Для квадратного холста */
+}
+.info-display { /* Для отображения инфо на странице с монеткой (Current Bet, Result) */
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #eee;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+/* .bet-amount-controls уже определены выше, их можно использовать */
+
+
+/* --- Стили, специфичные для игры "Мины" --- */
+/* Этот класс должен быть добавлен к <main> на странице Mines */
+main.mines-game-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    max-width: 90%;
+    width: 550px;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+/* Этот класс должен быть добавлен к <h1> на странице Mines */
+h1.mines-game-h1 {
+    color: #ffd700;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* Общие стили для .game-info в Mines, переопределяют более общие .game-info */
+main.mines-game-main .game-info {
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+/* Контейнер настроек игры (размер доски, количество мин) */
+.game-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.game-settings label {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #eee;
+}
+.board-size-selection, .mine-count-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+.row-controls { /* Кнопки 3x3, 5x5 и т.д. */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.row-option-button {
+    font-size: 16px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+.row-option-button:hover { background-color: #777; transform: translateY(-2px); }
+.row-option-button.selected {
+    background-color: #ffd700;
+    color: #333;
+    border: 2px solid #b8860b;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+/* Контейнер самой доски "Мины" */
+.mines-board {
+    display: grid;
+    border: 3px solid #ffd700;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    padding: 5px;
+    margin-top: 20px;
+    max-width: 500px;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Делает доску квадратной */
+    box-sizing: border-box;
+}
+/* Стили для отдельных ячеек доски "Мины" */
+.mine-cell {
+    width: 100%;
+    height: 100%;
+    background-color: #34495E; /* Цвет для НЕоткрытой ячейки */
+    border: 1px solid #2C3E50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size и font-weight здесь не нужны, т.к. текст заменен картинками */
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.05s ease;
+    border-radius: 4px;
+    color: #eee;
+    overflow: hidden; /* Важно: скрывает части изображения, если оно все равно выходит за границы */
+}
+.mine-cell:hover { background-color: #4A6572; }
+.mine-cell.revealed { cursor: default; }
+
+/* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ОТКРЫТЫХ ЯЧЕЕК */
+.mine-cell.safe-revealed {
+    background-color: #FFD700; /* Золотистый фон для безопасной открытой ячейки */
+    /* color: #333; (если был текст) */
+}
+.mine-cell.mine {
+    background-color: #E74C3C; /* Красный фон для мины */
+    /* color: white; (если был текст) */
+}
+
+/* Стили для изображения внутри ячейки (ТОЛЬКО для открытых ячеек) */
+.mine-cell .cell-content-image {
+    width: 100%; /* Занимает всю доступную ширину родительской ячейки */
+    height: 100%; /* Занимает всю доступную высоту родительской ячейки */
+    object-fit: contain; /* Масштабирует изображение, чтобы оно полностью поместилось в элемент, сохраняя пропорции */
+    display: block; /* Убирает лишний отступ под изображением */
+    padding: 5%; /* Добавляет небольшой внутренний отступ для изображения внутри ячейки */
+    box-sizing: border-box; /* Включает padding в общие размеры элемента */
+}
+
+/* Контейнер кнопок действий в игре "Мины" (Start Game, Cash Out) */
+.game-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+/* Стили для кнопок Start Game и Cash Out */
+.start-game-button { background-color: #4CAF50; }
+.start-game-button:hover { background-color: #45a049; }
+.cash-out-button { background-color: #007bff; }
+.cash-out-button:hover { background-color: #0056b3; }
+
+
+/* --- Общие медиазапросы для всех страниц --- */
+@media (max-width: 768px) {
+    /* Стили для Menu.html на 768px */
+    .main-content h1 {
+        font-size: 2.5em;
+    }
+    .game-selection {
+        grid-template-columns: 1fr; /* Одна колонка для карточек игр */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Стили для хедера на 600px */
+    header {
+        padding: 10px 5px;
+    }
+    nav.menu ul {
+        justify-content: space-around;
+        gap: 5px;
+        font-size: 16px;
+    }
+    nav.menu ul li a {
+        padding: 5px 8px;
+        font-size: 15px;
+    }
+    nav.menu ul li ul.dropdown-menu,
+    .balance-dropdown {
+        right: auto;
+        left: 0;
+        min-width: 180px;
+        font-size: 14px;
+    }
+    .balance-dropdown .promo-code-input-section { padding: 10px; }
+    .balance-dropdown .input-field-small { width: calc(100% - 20px); box-sizing: border-box; }
+    .balance-dropdown .button-small { width: 100%; margin-top: 10px; }
+    .balance-dropdown .result-text-small { font-size: 0.9em; }
+
+    /* Стили для игровых страниц (Main, H1, Canvas, Controls) на 600px */
+    main.game-page-main {
+        padding: 15px;
+        margin-top: 15px;
+        width: 95%; /* Шире на маленьких экранах */
+        max-width: none; /* Сбрасывает ограничение max-width: 550px */
+        gap: 10px; /* Уменьшаем зазор между элементами */
+    }
+    h1.game-page-h1 {
+        font-size: 1.8em;
+    }
+    .game-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .game-info p {
+        font-size: 1em;
+    }
+    .info-value {
+        font-size: 1.1em;
+    }
+    .bet-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .bet-input {
+        width: 100px;
+    }
+    .control-button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+    .spin-button,
+    .start-game-button,
+    .cash-out-button {
+        font-size: 18px;
+        padding: 10px 25px;
+    }
+    .result-text {
+        font-size: 1.2em;
+        margin-top: 10px; /* Уменьшаем отступ сверху */
+    }
+    canvas { /* Стили для canvas на игровых страницах */
+        width: 100%;
+        max-width: 100%; /* Сбрасывает ограничение max-width: 500px */
+        height: auto;
+    }
+
+    /* Стили для Mines (переопределения на 600px) */
+    main.mines-game-main {
+        gap: 10px; /* Уменьшаем зазор для Mines */
+    }
+    .mines-board {
+        width: 100%;
+        max-width: 100%; /* Убедимся, что она занимает всю доступную ширину */
+        height: auto; /* Сохраняем пропорции */
+    }
+    .mine-cell {
+        font-size: 1.5em; /* Можно уменьшить размер шрифта эмодзи для очень маленьких экранов */
+    }
+    .game-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .row-controls { /* Для Mines */
+        flex-direction: column;
+    }
+}
+
+/* --- Стили, специфичные для игры "Блэкджек" --- */
+/* Этот класс должен быть добавлен к <main> на странице Blackjack */
+main.blackjack-game-main {
+    max-width: 800px; /* Шире, чтобы вместить карты */
+    width: 95%; /* На мобильных будет шире */
+    padding: 25px; /* Чуть больше паддинга */
+    background-color: rgba(0, 50, 0, 0.8); /* Темно-зеленый фон стола */
+    border: 3px solid #00ff00; /* Зеленая рамка */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+    gap: 25px; /* Больше отступов между секциями */
+    min-height: 600px; /* Увеличил общую минимальную высоту для размещения карт */
+}
+
+h1.blackjack-game-h1 {
+    color: #ffd700;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.dealer-area,
+.player-area {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    text-align: center;
+    min-height: 200px; /* Увеличил мин. высоту для карт */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #eee;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.card-hand-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Карты выравниваются по верху */
+    /* Увеличил gap для наложения карт */
+    gap: -40px; /* Карты будут накладываться друг на друга */
+    min-height: 150px; /* Увеличил мин. высоту для карт */
+    flex-wrap: wrap; /* Разрешить картам переноситься на новую строку при узком экране */
+}
+
+/* Стили для отдельных карт */
+.card {
+    width: 110px; /* Увеличил ширину карты */
+    height: 150px; /* Увеличил высоту карты (стандартные пропорции 3:4) */
+    border: 2px solid #ccc; /* Чуть толще рамка */
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em; /* Размер шрифта для заглушек, если нет изображений */
+    font-weight: bold;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; /* Предотвратить сжатие карт */
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease-out; /* Плавное движение карт */
+}
+
+/* Карты будут чуть больше налезать друг на друга */
+.card:not(:first-child) {
+    margin-left: 3px; /* Отрицательный отступ для наложения (для нового размера) */
+}
+
+/* Изображение карты */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполнить карту, обрезая края */
+    border-radius: 6px; /* Чуть меньше радиус для изображения внутри карты */
+}
+
+/* Кнопки действий в Блэкджеке */
+.blackjack-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Медиазапросы для адаптивности */
+@media (max-width: 600px) {
+    main.blackjack-game-main {
+        padding: 15px;
+        gap: 15px;
+    }
+    .player-label {
+        font-size: 1.3em;
+    }
+    .card {
+        width: 70px; /* Уменьшить размер карт на мобильных */
+        height: 95px;
+        font-size: 1.5em;
+    }
+    .card:not(:first-child) {
+        margin-left: -40px; /* Корректировка наложения */
+    }
+    .blackjack-actions .control-button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        width: 60px;
+        height: 80px;
+        border-radius: 6px;
+    }
+    .card:not(:first-child) {
+        margin-left: -35px;
+    }
+}
+
+/* --- Общие медиазапросы для всех страниц --- */
+@media (max-width: 768px) {
+    /* Стили для Menu.html на 768px */
+    .main-content h1 {
+        font-size: 2.5em;
+    }
+    .game-selection {
+        grid-template-columns: 1fr; /* Одна колонка для карточек игр */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Стили для хедера на 600px */
+    header {
+        padding: 10px 5px;
+    }
+    nav.menu ul {
+        justify-content: space-around;
+        gap: 5px;
+        font-size: 16px;
+    }
+    nav.menu ul li a {
+        padding: 5px 8px;
+        font-size: 15px;
+    }
+    nav.menu ul li ul.dropdown-menu,
+    .balance-dropdown {
+        right: auto;
+        left: 0;
+        min-width: 180px;
+        font-size: 14px;
+    }
+    .balance-dropdown .promo-code-input-section { padding: 10px; }
+    .balance-dropdown .input-field-small { width: calc(100% - 20px); box-sizing: border-box; }
+    .balance-dropdown .button-small { width: 100%; margin-top: 10px; }
+    .balance-dropdown .result-text-small { font-size: 0.9em; }
+
+    /* Стили для игровых страниц (Main, H1, Canvas, Controls) на 600px */
+    main.game-page-main {
+        padding: 15px;
+        margin-top: 15px;
+        width: 95%; /* Шире на маленьких экранах */
+        max-width: none; /* Сбрасывает ограничение max-width: 550px */
+        gap: 10px; /* Уменьшаем зазор между элементами */
+    }
+    h1.game-page-h1 {
+        font-size: 1.8em;
+    }
+    .game-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .game-info p {
+        font-size: 1em;
+    }
+    .info-value {
+        font-size: 1.1em;
+    }
+    .bet-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .bet-input {
+        width: 100px;
+    }
+    .control-button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+    .spin-button,
+    .start-game-button,
+    .cash-out-button {
+        font-size: 18px;
+        padding: 10px 25px;
+    }
+    .result-text {
+        font-size: 1.2em;
+        margin-top: 10px; /* Уменьшаем отступ сверху */
+    }
+    canvas { /* Стили для canvas на игровых страницах */
+        width: 100%;
+        max-width: 100%; /* Сбрасывает ограничение max-width: 500px */
+        height: auto;
+    }
+
+    /* Стили для Mines (переопределения на 600px) */
+    main.mines-game-main {
+        gap: 10px; /* Уменьшаем зазор для Mines */
+    }
+    .mines-board {
+        width: 100%;
+        max-width: 100%; /* Убедимся, что она занимает всю доступную ширину */
+        height: auto; /* Сохраняем пропорции */
+    }
+    .mine-cell {
+        font-size: 1.5em; /* Можно уменьшить размер шрифта эмодзи для очень маленьких экранов */
+    }
+    .game-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .row-controls { /* Для Mines */
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content h1 {
+        font-size: 2em;
+    }
+    .game-card {
+        padding: 15px;
+    }
+    /* Дальнейшие корректировки для хедера на очень маленьких экранах */
+    nav.menu ul {
+        font-size: 14px;
+    }
+    nav.menu ul li a {
+        font-size: 14px;
+        padding: 3px 6px;
+    }
+
+    /* Стили для Blackjack на 400px */
+    .card {
+        width: 60px;
+        height: 80px;
+        border-radius: 6px;
+    }
+    .card:not(:first-child) {
+        margin-left: -35px;
+    }
+}
+
+
+/* --- БЛОК СТИЛЕЙ ДЛЯ КАЗИНО ВОЙНЫ (ДОБАВЛЕНО) --- */
+/* Переменные для градиентов (если не определены выше, будут здесь) */
+:root {
+    --casino-war-primary-gradient: linear-gradient(145deg, #4CAF50 0%, #45a049 100%); /* Зеленый */
+    --casino-war-secondary-gradient: linear-gradient(145deg, #007bff 0%, #0056b3 100%); /* Синий */
+    --casino-war-tertiary-gradient: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%); /* Красный */
+    --casino-war-bg-dark: rgba(20, 20, 20, 0.95);
+    --casino-war-card-bg: rgba(30, 30, 30, 0.9);
+}
+
+.game-container { /* Основной контейнер для Casino_War.html */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background: var(--background-gradient); /* Используем общий фон */
+    color: #eee; /* Используем общий цвет текста */
+}
+
+.game-area { /* Основной блок игры на странице Казино Войны */
+    background-color: var(--casino-war-bg-dark);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.score-display { /* Для отображения "Dealer's Card" и "Your Card" */
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff7f50; /* Accent color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+main.casino-war-game-main {
+    max-width: 800px; /* Ширина, аналогичная Blackjack */
+    width: 95%; /* Адаптивная ширина */
+    padding: 25px; /* Отступы, аналогичные Blackjack */
+    background-color: rgba(0, 0, 0, 0.8); /* Темный фон, как в Блэкджеке, но не зеленый */
+    border: 3px solid #ff7f50; /* Оранжевая рамка (используем accent-color) */
+    box-shadow: 0 0 20px rgba(255, 127, 80, 0.6); /* Оранжевое свечение */
+    gap: 25px; /* Отступы между секциями */
+    min-height: 600px; /* Минимальная высота для размещения содержимого */
+}
+
+/* Стили для контейнеров управления ставками и кнопок в Casino War */
+main.casino-war-game-main .bet-controls { /* Цель: чтобы bet-controls в Casino War всегда были столбиком */
+    flex-direction: column; /* Элементы будут располагаться столбиком */
+    gap: 10px; /* Отступ между строками */
+    width: 100%; /* Занимает всю доступную ширину */
+    box-sizing: border-box;
+    /* Убедимся, что это правило специфичнее, чем общее .bet-controls */
+}
+
+main.casino-war-game-main .bet-input { /* Специфический input-field для Casino War */
+    width: 150px;
+}
+
+.cards-section { /* Контейнер для рук дилера и игрока */
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+}
+
+.hand-display { /* Для каждой руки (дилер/игрок) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--casino-war-card-bg);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+    min-height: 250px;
+    width: 48%;
+}
+
+.hand-display h2 { /* Заголовки "Dealer" и "You" */
+    font-size: 1.8rem;
+    color: #ccc; /* Lighter text color */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-display { /* Контейнер для карт внутри руки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 170px;
+}
+
+/* Стили для отдельных карт в Casino War */
+.card-display .card {
+    width: 110px; 
+    height: 150px; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease-out;
+    margin-left: 0 !important; /* Убираем отрицательный margin, если он есть */
+    /* Базовые стили карты могут быть в .card (как в Блэкджеке), здесь только переопределения */
+    border: 2px solid #ccc; /* Чуть толще рамка */
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.card-display .card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Card animations/effects для Casino War */
+.card-facedown {
+    transform: rotateY(180deg);
+    background-color: #333;
+}
+
+.card-faceup {
+    transform: rotateY(0deg);
+}
+
+/* Controls section для Casino War */
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+/* NEW: Layout for bet info and buttons in Casino War */
+.bet-controls { /* Общий контейнер для bet-info-input и bet-action-buttons */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Элементы будут располагаться столбиком */
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Отступ между строками */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bet-info-input { /* Контейнер для "Current Bet" и поля ввода */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.bet-action-buttons { /* Контейнер для кнопок "Set Bet" и "All In" */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.bet-controls .input-field { /* Специфический input-field для Casino War */
+    width: 150px;
+}
+
+.game-buttons { /* Кнопки Deal, Go to War, Surrender */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Specific button colors for Casino War (используем градиенты) */
+.control-button.primary-button { /* Например, кнопка Deal */
+    background: var(--casino-war-primary-gradient);
+}
+
+.control-button.secondary-button { /* Например, кнопка Go to War */
+    background: var(--casino-war-secondary-gradient);
+}
+
+.control-button.tertiary-button { /* Например, кнопка Surrender */
+    background: var(--casino-war-tertiary-gradient);
+}
+
+.control-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Медиазапросы для Casino War */
+@media (max-width: 600px) {
+    .game-area {
+        padding: 15px;
+        gap: 15px;
+    }
+    .score-display {
+        font-size: 1.2rem;
+    }
+    .hand-display h2 {
+        font-size: 1.5rem;
+    }
+    .card-display .card {
+        width: 70px;
+        height: 95px;
+    }
+    .controls-section {
+        gap: 15px;
+    }
+    .bet-controls label {
+        font-size: 1em;
+    }
+    .bet-controls .input-field {
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .score-display p {
+        font-size: 1rem;
+    }
+    .hand-display h2 {
+        font-size: 1.3rem;
+    }
+    .card-display .card {
+        width: 60px;
+        height: 80px;
+    }
+    /* Убедимся, что вертикальное расположение на очень маленьких экранах сохраняется */
+    .bet-info-input, .bet-action-buttons {
+        flex-direction: column;
+        gap: 8px; /* Чуть меньший отступ */
+    }
+}
