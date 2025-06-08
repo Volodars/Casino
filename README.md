@@ -1,5 +1,5 @@
 # [Casino](https://volodars.github.io/Casino/Casino/Menu.html)
-# [Funny casino](https://volodars.github.io/Casino/Funny%20casino/Menu.html)
+# [Funny casino](https://volodars.github.io/Casino/Funny_casino/Menu.html)
 
 🎰 Casino Project (Web Application)
 This repository hosts a personal web application project, "Casino," developed using vanilla HTML, CSS, and JavaScript. The application provides users with several popular casino games, integrated with a balance system, promo code redemption functionality, and game progress saving features.
