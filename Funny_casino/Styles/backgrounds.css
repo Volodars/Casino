@@ -41,3 +41,42 @@
     background: url('../Images/fone_casino_war.png') no-repeat center center fixed;
     background-size: cover;
 }
+
+/* Mobile-specific backgrounds for screens smaller than 768px */
+@media (max-width: 768px) {
+
+    .body-menu {
+        background: url('../Images/Mobile_fons/fone_menu_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-slots {
+        background: url('../Images/Mobile_fons/fone_slots_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-roulette {
+        background: url('../Images/Mobile_fons/fone_roulette_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-coin {
+        background: url('../Images/Mobile_fons/fone_coin_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-mines {
+        background: url('../Images/Mobile_fons/fone_mines_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-blackjack {
+        background: url('../Images/Mobile_fons/fone_blackjack_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-war {
+        background: url('../Images/Mobile_fons/fone_casino_war_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
