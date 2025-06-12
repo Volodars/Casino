@@ -1,0 +1,132 @@
+/* backgrounds.css */
+
+/* Background for the main menu page */
+.body-menu { 
+    background: url('../Images/fone_menu.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.body-rules { 
+    background: url('../Images/fone_rules.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Slot Machine page */
+.body-slots {
+    background: url('../Images/fone_slots.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Roulette page */
+.body-roulette {
+    background: url('../Images/fone_roulette.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Heads or Tails page */
+.body-coin { 
+    background: url('../Images/fone_coin.png') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+/* Background for the Mines page */
+.body-mines {
+    background: url('../Images/fone_mines.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Blackjack page */
+.body-blackjack {
+    background: url('../Images/fone_blackjack.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background for the Casino War page */
+.body-war {
+    background: url('../Images/fone_casino_war.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.body-poker {
+    background: url('../Images/fone_poker.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.body-cubes {
+    background: url('../Images/fone_cubes.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.body-races {
+    background: url('../Images/fone_racing.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.body-fortune {
+    background: url('../Images/fone_fortune.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Mobile-specific backgrounds for screens smaller than 768px */
+@media (max-width: 768px) {
+
+    .body-menu {
+        background: url('../Images/Mobile_fons/fone_menu_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-rules {
+        background: url('../Images/Mobile_fons/fone_rules_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-slots {
+        background: url('../Images/Mobile_fons/fone_slots_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-roulette {
+        background: url('../Images/Mobile_fons/fone_roulette_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-coin {
+        background: url('../Images/Mobile_fons/fone_coin_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-mines {
+        background: url('../Images/Mobile_fons/fone_mines_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-blackjack {
+        background: url('../Images/Mobile_fons/fone_blackjack_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-war {
+        background: url('../Images/Mobile_fons/fone_casino_war_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-poker {
+        background: url('../Images/Mobile_fons/fone_poker_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-cubes {
+        background: url('../Images/Mobile_fons/fone_cubes_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .body-races {
+        background: url('../Images/Mobile_fons/fone_racing_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+    
+    .body-fortune {
+        background: url('../Images/Mobile_fons/fone_fortune_mobile.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+}

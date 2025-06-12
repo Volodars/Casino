@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Game Rules</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+    <link rel="stylesheet" href="Styles/backgrounds.css">
+</head>
+<body class="body-rules"> <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="Menu.html">Home</a></li>
+                <li><a href="Rules.html">Game Rules</a></li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Games/Slots.html">Slot Machine</a></li>
+                        <li><a href="Games/Roulette.html">Roulette</a></li>
+                        <li><a href="Games/Coin.html">Heads or Tails</a></li>
+                        <li><a href="Games/Mines.html">Mines</a></li>
+                        <li><a href="Games/Blackjack.html">Blackjack</a></li>
+                        <li><a href="Games/Casino_War.html">Casino War</a></li>
+                        <li><a href="Games/Poker.html">Poker</a></li>
+                        <li><a href="Games/Cubs.html">Dice</a></li>
+                        <li><a href="Games/Racing.html">Races</a></li>
+                    </ul>
+                </li>
+                <li class="balance-container-li">
+                    <a href="#">Balance: <span id="balanceAmount">0.00</span></a>
+                    <div class="balance-dropdown">
+                        <div class="dropdown-item">
+                            <a href="Games/Fortune.html" class="balance-topup-link" id="topUpBalanceLink">Get Free Balance!</a>
+                        </div>
+                        <div class="dropdown-item promo-code-input-section">
+                            <input type="text" id="promoCodeInput" placeholder="Enter promo code" class="input-field-small">
+                            <button id="redeemPromoButton" class="button-small">Redeem</button>
+                            <p id="promoCodeResult" class="result-text-small"></p>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1>Casino Game Rules</h1>
+        <p>Welcome to the rules section! Here you can find out how to play all the games available in our casino.</p>
+
+        <nav class="rules-nav">
+  <ul>
+    <li><a href="#slots-rules">Slot Machine</a></li>
+    <li><a href="#roulette-rules">Roulette</a></li>
+    <li><a href="#coin-rules">Heads or Tails</a></li>
+    <li><a href="#mines-rules">Mines</a></li>
+    <li><a href="#blackjack-rules">Blackjack</a></li>
+    <li><a href="#casino-war-rules">Casino War</a></li>
+    <li><a href="#poker-rules">Poker</a></li>
+    <li><a href="#dice-rules">Dice</a></li>
+    <li><a href="#races-rules">Races</a></li>
+    <li><a href="#fortune-rules">Wheel of Fortune</a></li>
+  </ul>
+</nav>
+
+        <section class="rules-section" id="slots-rules">
+            <h2>Slot Machine</h2>
+            <h3>Objective:</h3>
+            <p>Spin the reels and match symbols across paylines to win.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Set your bet amount per spin.</li>
+                <li>Click the "Spin" button to start the reels.</li>
+                <li>If identical symbols align on active paylines, you win a payout based on the paytable.</li>
+                <li>Look out for special symbols like Wilds (substitute for others) and Scatters (trigger bonus features).</li>
+            </ul>
+            <h3>Payouts:</h3>
+            <p>Payouts vary depending on the symbols matched and the game's specific paytable. Refer to the in-game paytable for details.</p>
+        </section>
+
+        <section class="rules-section" id="roulette-rules">
+            <h2>Roulette</h2>
+            <h3>Objective:</h3>
+            <p>Predict where the ball will land on the spinning wheel. Place your chips on the corresponding numbers or sections on the betting table.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Choose your chip value.</li>
+                <li>Place chips on the betting layout. You can bet on specific numbers, ranges of numbers, colors (red/black), odd/even, or columns/dozens.</li>
+                <li>Click "Spin" to start the wheel.</li>
+                <li>If the ball lands on a number covered by your bet, you win according to the payout odds.</li>
+            </ul>
+            <h3>Common Bets:</h3>
+            <ul>
+                <li><strong>Inside Bets:</strong> Specific numbers or small groups of numbers (higher payout, lower probability).</li>
+                <li><strong>Outside Bets:</strong> Larger groups like Red/Black, Odd/Even, 1-18/19-36 (lower payout, higher probability).</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="coin-rules">
+            <h2>Heads or Tails</h2>
+            <h3>Objective:</h3>
+            <p>Guess which side of the coin will land face up: Heads or Tails.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Set your bet amount.</li>
+                <li>Choose "Heads" or "Tails".</li>
+                <li>Click the "Flip" button.</li>
+                <li>If your prediction is correct, you win! Typically, the payout is 2x your bet.</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="mines-rules">
+            <h2>Mines</h2>
+            <h3>Objective:</h3>
+            <p>Reveal safe tiles on a grid without hitting hidden mines. The more safe tiles you reveal, the higher your payout.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Set your bet amount and the number of mines you want on the grid (usually 1 to 24). More mines mean higher risk but also higher potential rewards.</li>
+                <li>Click on tiles to reveal them.</li>
+                <li>If you click a safe tile, your potential winnings increase.</li>
+                <li>If you click a mine, you lose your bet.</li>
+                <li>You can cash out your winnings at any time after revealing at least one safe tile.</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="blackjack-rules">
+            <h2>Blackjack</h2>
+            <h3>Objective:</h3>
+            <p>Get a hand total closer to 21 than the dealer, without exceeding 21.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Place your bet.</li>
+                <li>You and the dealer are dealt two cards. Your cards are usually face up, one of the dealer's cards is face down (hole card).</li>
+                <li>Card values: Number cards are face value. Face cards (J, Q, K) are 10. Aces are 1 or 11 (player's choice).</li>
+                <li><strong>Actions:</strong>
+                    <ul>
+                        <li><strong>Hit:</strong> Take another card.</li>
+                        <li><strong>Stand:</strong> Take no more cards.</li>
+                        <li><strong>Double Down:</strong> Double your bet and take one more (and final) card.</li>
+                        <li><strong>Split:</strong> If you have two cards of the same rank, split them into two separate hands (requires an additional bet).</li>
+                    </ul>
+                </li>
+                <li>The dealer plays after all players. The dealer must hit on 16 or less and stand on 17 or more (rules vary slightly).</li>
+                <li>If your hand total is higher than the dealer's without busting (going over 21), you win. If you get exactly 21 with your first two cards (Ace and 10-value card), it's a Blackjack!</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="casino-war-rules">
+            <h2>Casino War</h2>
+            <h3>Objective:</h3>
+            <p>Draw a card higher than the dealer's card.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Place your bet.</li>
+                <li>You and the dealer each receive one card.</li>
+                <li>If your card is higher than the dealer's, you win even money.</li>
+                <li>If the cards are tied, you have two options:
+                    <ul>
+                        <li><strong>Surrender:</strong> Lose half your bet.</li>
+                        <li><strong>Go to War:</strong> Double your initial bet. The dealer deals another card to both you and themselves. If your second card is higher, you win even money on the raised bet (your original bet pushes). If tied again, you win a bonus payout. If the dealer's card is higher, you lose both bets.</li>
+                    </ul>
+                </li>
+                <li>Aces are always high.</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="poker-rules">
+            <h2>Poker (Simplified)</h2>
+            <h3>Objective:</h3>
+            <p>Form the best five-card hand possible (or beat the dealer's hand, depending on the variant).</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Set your bet.</li>
+                <li>You are dealt cards (e.g., 2 in Texas Hold'em, 5 in Five Card Draw). Community cards may also be dealt.</li>
+                <li>The goal is to form the highest-ranking poker hand using your cards and any community cards.</li>
+                <li><strong>Hand Rankings (from highest to lowest):</strong> Royal Flush, Straight Flush, Four of a Kind, Full House, Flush, Straight, Three of a Kind, Two Pair, One Pair, High Card.</li>
+                <li>Depending on the game variant (e.g., against other players, against the dealer), you may have options to bet, raise, or fold.</li>
+                <li>The highest hand wins the pot (or beats the dealer).</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="dice-rules">
+            <h2>Dice (Cubes)</h2>
+            <h3>Objective:</h3>
+            <p>Predict the outcome of a roll of two dice: whether the sum will be less than, exactly equal to, or greater than a chosen target number.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Set your bet amount.</li>
+                <li>Choose a "Target Sum" between 2 and 12.</li>
+                <li>Select one of three conditions:
+                    <ul>
+                        <li><strong>Less than:</strong> You win if the dice sum is less than your target.</li>
+                        <li><strong>Exactly:</strong> You win if the dice sum is exactly your target.</li>
+                        <li><strong>Greater than:</strong> You win if the dice sum is greater than your target.</li>
+                    </ul>
+                </li>
+                <li>Click "Roll Dice".</li>
+                <li>If your prediction is correct, you win based on dynamic odds determined by the probability of your chosen condition.</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="races-rules">
+            <h2>Races</h2>
+            <h3>Objective:</h3>
+            <p>Bet on a racer and predict if they will win, place (finish in top positions), or show (finish in top three).</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Choose a racer you believe will win or place well.</li>
+                <li>Select your bet type (Win, Place, Show) and bet amount.</li>
+                <li>Watch the race unfold.</li>
+                <li>If your chosen racer meets your prediction, you win! Payouts depend on the odds of your chosen racer.</li>
+            </ul>
+            <h3>Bet Types:</h3>
+            <ul>
+                <li><strong>Win:</strong> Your racer must finish 1st.</li>
+                <li><strong>Place:</strong> Your racer must finish 1st or 2nd.</li>
+                <li><strong>Show:</strong> Your racer must finish 1st, 2nd, or 3rd.</li>
+            </ul>
+        </section>
+
+        <section class="rules-section" id="fortune-rules">
+            <h2>Wheel of Fortune</h2>
+            <h3>Objective:</h3>
+            <p>Spin the wheel and win the prize on the segment where the pointer lands.</p>
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Set your bet amount (if applicable, or spin for free).</li>
+                <li>Click the "Spin" button.</li>
+                <li>The wheel will spin and gradually slow down.</li>
+                <li>You win the amount indicated on the segment pointed to by the arrow when the wheel stops.</li>
+                <li>There may be a cooldown period between spins.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <script src="JavaScript/menu.js"></script>
+    <script src="JavaScript/promo.js"></script>
+</body>
+</html>
