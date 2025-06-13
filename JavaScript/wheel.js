@@ -138,7 +138,7 @@ function spinWheel() {
     }
 
     // Check balance before spinning
-    if (typeof playerBalance === 'undefined' || playerBalance <= 0) {
+    if (typeof playerBalance === 'undefined' || playerBalance < 0) {
         wheelResultDisplay.textContent = 'Insufficient funds! Top up your balance.'; // Translated
         wheelResultDisplay.style.color = 'red';
         return;
