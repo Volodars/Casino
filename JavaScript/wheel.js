@@ -11,7 +11,7 @@ const topUpBalanceLink = document.getElementById('topUpBalanceLink');
 // --- Game State Variables ---
 // Important: COOLDOWN_DURATION_MS is set to 60 seconds for easy testing.
 // For production, you might want to increase it to 60 * 60 * 1000 (60 minutes).
-const COOLDOWN_DURATION_MS = 60 * 60 * 1000; // 60 seconds cooldown (for quick testing)
+const COOLDOWN_DURATION_MS = 60 * 60 * 1000; // 60 min cooldown (for quick testing)
 let lastSpinTime = localStorage.getItem(`lastSpinTime_fortune_${CASINO_ID}`) ? parseInt(localStorage.getItem(`lastSpinTime_fortune_${CASINO_ID}`)) : 0;
 let wheelAnimationFrameId = null;
 let isSpinning = false;
@@ -146,6 +146,12 @@ function spinWheel() {
 
     wheelResultDisplay.textContent = ''; // Clear previous result
 
+    // --- ИСПРАВЛЕНИЕ: Перемещено сохранение lastSpinTime сюда ---
+    lastSpinTime = Date.now(); // Record last spin time IMMEDIATELY
+    localStorage.setItem(`lastSpinTime_fortune_${CASINO_ID}`, lastSpinTime);
+    updateWheelCooldownDisplay(); // Update cooldown display IMMEDIATELY
+    // --- Конец ИСПРАВЛЕНИЯ ---
+
     const playPromise = spinSound.play();
     if (playPromise !== undefined) {
         playPromise.catch(error => {
@@ -191,10 +197,7 @@ function spinWheel() {
     let startTime = null;
     let currentRotation = 0;
 
-    // Calculate the angle to rotate the wheel so the target segment is under the pointer
-    // The pointer is at the top (at 3/2 * PI radians), so adjust the angle.
     const segmentCenterAngle = (3 * Math.PI / 2) - (targetSegmentIndex * segmentAngle + segmentAngle / 2);
-    // Normalize the angle to be between 0 and 2*PI
     let angleToStop = (segmentCenterAngle + 2 * Math.PI) % (2 * Math.PI);
 
     const extraRotations = 5; // Number of full extra rotations for effect
@@ -204,34 +207,32 @@ function spinWheel() {
     function animateWheel(timestamp) {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1); // Progress from 0 to 1
-        const easeOutProgress = 1 - Math.pow(1 - progress, 3); // Ease-out cubic function
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOutProgress = 1 - Math.pow(1 - progress, 3);
 
         currentRotation = easeOutProgress * finalTargetRotation;
 
-        drawWheel(currentRotation); // Draw the wheel with the current rotation angle
+        drawWheel(currentRotation);
 
         if (elapsed < duration) {
-            wheelAnimationFrameId = requestAnimationFrame(animateWheel); // Continue animation
+            wheelAnimationFrameId = requestAnimationFrame(animateWheel);
         } else {
             // Animation finished
-            cancelAnimationFrame(wheelAnimationFrameId); // Stop animation loop
-            spinSound.pause(); // Stop spin sound
-            spinSound.currentTime = 0; // Reset sound to beginning
+            cancelAnimationFrame(wheelAnimationFrameId);
+            spinSound.pause();
+            spinSound.currentTime = 0;
 
-            drawWheel(finalTargetRotation); // Final draw to ensure wheel stops exactly at the right spot
+            drawWheel(finalTargetRotation);
 
-            // --- Visual Balance Update on the Page After Animation ---
-            // The balance in localStorage has already been updated above. Now, update the UI.
+            // --- Визуальное обновление баланса на странице после анимации ---
             if (typeof updateBalanceDisplay === 'function') {
                 updateBalanceDisplay();
-                console.log("Visual balance update on page after animation."); // Translated
+                console.log("Visual balance update on page after animation.");
             } else {
-                console.error("updateBalanceDisplay function from promo.js is unavailable for visual update."); // Translated
+                console.error("updateBalanceDisplay function from promo.js is unavailable for visual update.");
             }
-            // --- End of visual update ---
 
-            wheelResultDisplay.textContent = `Congratulations! You won $${targetSegment.value}!`; // Translated
+            wheelResultDisplay.textContent = `Congratulations! You won $${targetSegment.value}!`;
             wheelResultDisplay.style.color = '#00FF00';
 
             const winPlayPromise = winSound.play();
@@ -239,16 +240,19 @@ function spinWheel() {
                 winPlayPromise.catch(error => console.warn("Win sound playback prevented:", error));
             }
 
-            lastSpinTime = Date.now(); // Record last spin time
-            localStorage.setItem(`lastSpinTime_fortune_${CASINO_ID}`, lastSpinTime);
-            updateWheelCooldownDisplay(); // Update timer display
-            isSpinning = false; // Set flag that wheel is not spinning
-            spinWheelButton.disabled = false; // Enable spin button
-            console.log("Spin finished, button enabled."); // Translated
+            // --- УДАЛЕНО: Эти строки перемещены в начало spinWheel() ---
+            // lastSpinTime = Date.now();
+            // localStorage.setItem(`lastSpinTime_fortune_${CASINO_ID}`, lastSpinTime);
+            // updateWheelCooldownDisplay();
+            // --- Конец УДАЛЕНО ---
+
+            isSpinning = false;
+            spinWheelButton.disabled = false;
+            console.log("Spin finished, button enabled.");
         }
     }
-    wheelAnimationFrameId = requestAnimationFrame(animateWheel); // Start animation
-    console.log("Animation started."); // Translated
+    wheelAnimationFrameId = requestAnimationFrame(animateWheel);
+    console.log("Animation started.");
 }
 
 // --- Functions related to game logic and timer ---
