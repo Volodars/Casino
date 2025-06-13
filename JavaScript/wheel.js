@@ -34,7 +34,7 @@ if (Math.abs(totalProbability - 1) > 0.001) {
 const segmentAngle = (2 * Math.PI) / wheelSegments.length;
 
 // --- Sound Effects ---
-const spinSound = new Audio('../Music/SpinSound.mp3');
+const spinSound = new Audio('../Music/Roulette.mp3');
 const winSound = new Audio('../Music/Win.mp3');
 const loseSound = new Audio('../Music/Lose.mp3');
 
