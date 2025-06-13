@@ -183,6 +183,29 @@ nav.menu ul li ul.dropdown-menu li a:hover {
     margin-top: 10px;
 }
 
+.welcome-message-block {
+    background-color: rgba(0, 0, 0, 0.7); /* Черный фон с небольшой прозрачностью */
+    border: 2px solid #FFD700; /* Золотая рамка, как обычно в вашем стиле */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 20px; /* Отступы внутри блока */
+    margin: 20px auto; /* Отступы сверху/снизу и центрирование */
+    text-align: center; /* Центрируем текст внутри */
+    color: #fff; /* Белый текст */
+    max-width: 800px; /* Ограничиваем ширину для лучшего вида */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); /* Небольшая тень для эффекта свечения */
+}
+
+.welcome-message-block h1 {
+    color: #FFD700; /* Золотой цвет для заголовка */
+    margin-bottom: 10px; /* Отступ под заголовком */
+    font-size: 2.5em; /* Размер шрифта заголовка */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.7); /* Тень для заголовка */
+}
+
+.welcome-message-block p {
+    font-size: 1.2em; /* Размер шрифта для параграфа */
+    line-height: 1.5; /* Межстрочный интервал */
+}
 
 /* --- Стили, специфичные для страницы Меню (Menu.html) --- */
 .main-content {
