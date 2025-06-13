@@ -1155,13 +1155,7 @@ main.casino-war-game-main .bet-input { /* Специфический input-field
         width: 60px;
         height: 80px;
     }
-    /* 
-    Убедимся, что вертикальное расположение на очень маленьких экранах сохраняется
-    .bet-info-input, .bet-action-buttons {
-        flex-direction: column;
-        gap: 8px; /* Чуть меньший отступ */
-    }
-    */
+    /* Убедимся, что вертикальное расположение на очень маленьких экранах сохраняется */
 }
 
 /* === Унифицированные стили для всех игровых страниц === */
@@ -1823,54 +1817,65 @@ main.poker-game-main {
 #betCar3:hover {
   background-color: #ac7312;
 }
+/* ---------- ОСНОВА СЕКЦИЙ ---------- */
+.rules-section {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: var(--text-color-light);
+    text-align: center;
+}
 
-        /* Дополнительные стили для страницы правил, если нужны */
-        .rules-section {
-            background-color: var(--card-bg-color); /* Используем цвет карточек */
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            color: var(--text-color-light);
-        }
+/* ---------- ЗАГОЛОВКИ ---------- */
+.rules-section h2 {
+    color: var(--header-color);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
 
-        .rules-section h2 {
-            color: var(--header-color); /* Золотой заголовок */
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            border-bottom: 2px solid var(--accent-color); /* Оранжевая полоса под заголовком */
-            padding-bottom: 10px;
-        }
+.rules-section h3 {
+    color: var(--text-color-primary);
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 
-        .rules-section h3 {
-            color: var(--text-color-primary);
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
+/* ---------- ТЕКСТ ---------- */
+.rules-section p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
 
-        .rules-section p, .rules-section ul {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
+/* ---------- СПИСКИ ---------- */
+.rules-section ul {
+    list-style: none;         /* убираем точки */
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;    /* ширина по контенту */
+    text-align: left;         /* текст по левому краю внутри */
+}
 
-        .rules-section ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
+.rules-section ul li {
+    margin-bottom: 6px;
+}
 
-        .rules-section ul li {
-            margin-bottom: 5px;
-        }
+.rules-section ul ul {
+    margin-top: 8px;
+}
 
+/* ---------- НАВИГАЦИЯ НАВЕРХУ ---------- */
 .rules-nav {
     max-width: 700px;
     margin: 30px auto;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .rules-nav ul {
@@ -1901,16 +1906,21 @@ main.poker-game-main {
     color: #000;
 }
 
+/* ---------- АДАПТИВ ---------- */
+@media (max-width: 768px) {
+    .rules-section {
+        padding: 15px;
+    }
 
-        /* Адаптация для мобильных устройств */
-        @media (max-width: 768px) {
-            .rules-section {
-                padding: 15px;
-            }
-            .rules-section h2 {
-                font-size: 1.5em;
-            }
-            .rules-section h3 {
-                font-size: 1.2em;
-            }
-        }
+    .rules-section h2 {
+        font-size: 1.5em;
+    }
+
+    .rules-section h3 {
+        font-size: 1.2em;
+    }
+
+    .rules-nav ul {
+        grid-template-columns: 1fr;
+    }
+}
