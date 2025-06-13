@@ -82,7 +82,7 @@ function redeemPromoCode() {
     const code = promoCodeInput.value.trim().toUpperCase(); 
 
     if (!code) {
-        promoCodeResult.textContent = 'Введите промокод!';
+        promoCodeResult.textContent = 'Enter promo code!';
         promoCodeResult.style.color = 'orange';
         return;
     }
