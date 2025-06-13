@@ -14,7 +14,7 @@ const NUM_SPEED_ZONES_PER_LANE = 3; // Количество зон измене�
 const SPEED_CHANGE_MAGNITUDE = 0.2; // Насколько сильно может измениться скорость в зоне
 
 // --- Звуковые эффекты (пути к вашим файлам) ---
-const startSound = new Audio('../Music/RaceStart.mp3'); // Звук старта гонки
+const startSound = new Audio('../Music/Races.mp3'); // Звук старта гонки
 const winSound = new Audio('../Music/Win.mp3');      // Звук победы
 const loseSound = new Audio('../Music/Lose.mp3');     // Звук поражения
 
