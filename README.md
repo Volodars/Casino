@@ -56,41 +56,7 @@ Each game is carefully tuned with **theoretical Return to Player (RTP)** values 
 ### 📁 Project Structure
 
 
-│   Menu.html
-│   README.md
-│   Rules.html
-│
-├───Games
-│       Blackjack.html
-│       Casino\_War.html
-│       Coin.html
-│       Cubs.html
-│       Fortune.html
-│       Mines.html
-│       Poker.html
-│       Racing.html
-│       Roulette.html
-│       Slots.html
-│
-├───Images
-│   │   [various game previews, backgrounds, icons]
-│   ├───Anime\_cards
-│   │       [full deck assets for Blackjack and Poker]
-│   └───Mobile\_fons
-│           [mobile-optimized backgrounds for each game]
-│
-├───JavaScript
-│       [one file per game + promo system and menu handler]
-│
-├───Music
-│       [sound effects for cards, races, spinning, etc.]
-│
-├───RTP
-│       [simulation files for each game]
-│
-└───Styles
-backgrounds.css
-styles.css
+<pre> Project Root │ ├── Menu.html ├── README.md ├── Rules.html │ ├── Games │ ├── Blackjack.html │ ├── Casino_War.html │ ├── Coin.html │ ├── Cubs.html │ ├── Fortune.html │ ├── Mines.html │ ├── Poker.html │ ├── Racing.html │ ├── Roulette.html │ └── Slots.html │ ├── Images │ ├── [various game previews, backgrounds, icons] │ ├── Anime_cards │ │ └── [full deck assets for Blackjack and Poker] │ └── Mobile_fons │ └── [mobile-optimized backgrounds for each game] │ ├── JavaScript │ └── [one file per game + promo system and menu handler] │ ├── Music │ └── [sound effects for cards, races, spinning, etc.] │ ├── RTP │ └── [simulation files for each game] │ └── Styles ├── backgrounds.css └── styles.css </pre>
 
 
 ### 💡 Future Enhancements & Ideas
