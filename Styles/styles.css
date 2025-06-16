@@ -849,8 +849,7 @@ h1.blackjack-game-h1 {
     }
     nav.menu ul li ul.dropdown-menu,
     .balance-dropdown {
-        right: auto;
-        left: 0;
+        right: 0;
         min-width: 180px;
         font-size: 14px;
     }
