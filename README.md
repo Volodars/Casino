@@ -73,20 +73,20 @@ Each game is carefully tuned with **theoretical Return to Player (RTP)** values 
 │       Slots.html
 │
 ├───Images
-│   │   \[various game previews, backgrounds, icons]
+│   │   [various game previews, backgrounds, icons]
 │   ├───Anime\_cards
-│   │       \[full deck assets for Blackjack and Poker]
+│   │       [full deck assets for Blackjack and Poker]
 │   └───Mobile\_fons
-│           \[mobile-optimized backgrounds for each game]
+│           [mobile-optimized backgrounds for each game]
 │
 ├───JavaScript
-│       \[one file per game + promo system and menu handler]
+│       [one file per game + promo system and menu handler]
 │
 ├───Music
-│       \[sound effects for cards, races, spinning, etc.]
+│       [sound effects for cards, races, spinning, etc.]
 │
 ├───RTP
-│       \[simulation files for each game]
+│       [simulation files for each game]
 │
 └───Styles
 backgrounds.css
