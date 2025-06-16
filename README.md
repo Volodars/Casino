@@ -49,7 +49,7 @@ Each game is carefully tuned with **theoretical Return to Player (RTP)** values 
 | 🂡 Poker             | ~98.04 %       | Based on simplified one-round rules and payouts                      |
 | 🎡 Wheel of Fortune | ~100 %         | No cost to spin, fully bonus-based                                   |
 
-> All odds and RTPs are based on test simulations and may vary slightly. ![The example of simulation](RTP/RTP.png)
+> All odds and RTPs are based on test simulations and may vary slightly. [The example of simulation](RTP/RTP.png)
 > See full payout breakdowns in [`Rules.html`](Rules.html).
 
 
