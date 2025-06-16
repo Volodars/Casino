@@ -50,6 +50,7 @@ loseSound.volume = 0.8;   // NEW: Lose sound volume
 let currentBet = 100;      // Default bet
 let isSpinning = false;    // Flag to prevent multiple simultaneous spins
 let currentReels = [];     // Array that holds the current symbols on screen
+let winningPositions = [];
 let animationFrameId = null; // Stores the requestAnimationFrame ID
 
 // --- DOM Elements (Buttons, Inputs, Labels) ---
@@ -150,36 +151,59 @@ function drawReels(offset = 0) {
             );
         }
     }
+
+    if (!isSpinning && winningPositions.length > 0) {
+        for (const [col, row] of winningPositions) {
+            const x = col * reelWidth + 4;
+            const y = row * symbolHeight + 4;
+            const w = reelWidth - 8;
+            const h = symbolHeight - 8;
+
+            ctx.strokeStyle = '#ffd900';
+            ctx.lineWidth = 5;
+            ctx.shadowColor = 'transperent';
+            ctx.shadowBlur = 0;
+            ctx.strokeRect(x, y, w, h);
+        }
+    }
 }
 
 // Check if there is a win on any horizontal or diagonal line
 function checkWin(reels) {
-    const size = reels[0].length; // Assuming square reels (3x3)
+    const size = reels[0].length; // 3
     let highestMultiplier = 0;
+    winningPositions = []; // Очищаем перед новой проверкой
 
-    // Horizontal lines
+    // Горизонтали
     for (let row = 0; row < size; row++) {
         const lineSymbols = reels.map(col => col[row]);
         if (lineSymbols.every(s => s === lineSymbols[0])) {
             const symbol = lineSymbols[0];
             highestMultiplier = Math.max(highestMultiplier, symbolMultipliers[symbol] || 0);
+            for (let col = 0; col < size; col++) {
+                winningPositions.push([col, row]);
+            }
         }
     }
 
-    // Diagonal ↘ (top-left to bottom-right)
-    let diag1 = [];
+    // Диагональ ↘
+    let diag1 = [], match1 = true;
     for (let i = 0; i < size; i++) diag1.push(reels[i][i]);
-    if (diag1.every(s => s === diag1[0])) {
+    match1 = diag1.every(s => s === diag1[0]);
+    if (match1) {
         const symbol = diag1[0];
         highestMultiplier = Math.max(highestMultiplier, symbolMultipliers[symbol] || 0);
+        for (let i = 0; i < size; i++) winningPositions.push([i, i]);
     }
 
-    // Diagonal ↙ (bottom-left to top-right)
-    let diag2 = [];
+    // Диагональ ↙
+    let diag2 = [], match2 = true;
     for (let i = 0; i < size; i++) diag2.push(reels[i][size - 1 - i]);
-    if (diag2.every(s => s === diag2[0])) {
+    match2 = diag2.every(s => s === diag2[0]);
+    if (match2) {
         const symbol = diag2[0];
         highestMultiplier = Math.max(highestMultiplier, symbolMultipliers[symbol] || 0);
+        for (let i = 0; i < size; i++) winningPositions.push([i, size - 1 - i]);
     }
 
     return highestMultiplier;
@@ -275,6 +299,7 @@ function spinReels() {
 
             updateDisplay(); // Update balance display (already correctly updated)
             isSpinning = false;
+            drawReels(0);
             enableGameControls(); // Re-enable all relevant buttons
             animationFrameId = null; // Clear animation frame ID
         }
